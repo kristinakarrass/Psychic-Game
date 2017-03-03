@@ -11,7 +11,7 @@ game = function() {
 		console.log(computerGuess);
 
 		var guessedLetters = [];
-
+		var lettersUsed = [];
 	for (var i = 0; i < 9; i++) {
 
 		document.onkeyup = function(event) {
@@ -27,8 +27,8 @@ game = function() {
 			// }
 			
 			// AddAChild();
-
-			document.querySelector('#guessesSoFar').innerHTML = userGuess; 
+			lettersUsed.push(userGuess)
+			document.querySelector('#guessesSoFar').innerHTML = lettersUsed; 
 
 
 			if (letters.indexOf(userGuess) !== -1) { //checks that input is a valid letter
