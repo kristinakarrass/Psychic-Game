@@ -16,23 +16,28 @@ var computerGuess = letters[Math.floor(Math.random() * letters.length)];
 document.onkeyup = function(event) {
 
 	var userGuess = event.key;
-	document.querySelector('#guessesSoFar').innerHTML = userGuess;
+	document.querySelector('#guessesSoFar').innerHTML = "Guessed Letters: " + userGuess; 
 	console.log(userGuess);
 
 	if (letters.indexOf(userGuess) !== -1) {
 
 	if (userGuess === computerGuess) {
 		wins++;
-		document.querySelector('#wins').innerHTML = wins;
+		document.querySelector('#wins').innerHTML = "Wins: " + wins;
 		guesses = 9;
+		game(computerGuess);
 	}
 
 	else if (guesses === 0) {
 		losses++;
+		document.querySelector("#losses").innerHTML = "Losses: " + losses;
 		alert("You loose! The letter was " + computerGuess);
+		guesses = 9;
+		game(computerGuess);
 	}
 	else {
 		guesses--;
+		document.querySelector("#guessesLeft").innerHTML = "Guesses left: " + guesses;
 		console.log(guesses);
 	}
 	} // closes if statement
