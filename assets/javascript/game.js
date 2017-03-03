@@ -5,7 +5,6 @@ var guesses = 9;
 var guessedLetters, computerGuess;
 
 
-
 game = function() {
 
 var computerGuess = letters[Math.floor(Math.random() * letters.length)];
@@ -15,30 +14,45 @@ var computerGuess = letters[Math.floor(Math.random() * letters.length)];
 
 document.onkeyup = function(event) {
 
-	var userGuess = event.key;
-	document.querySelector('#guessesSoFar').innerHTML = "Guessed Letters: " + userGuess; 
-	console.log(userGuess);
+	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
-	if (letters.indexOf(userGuess) !== -1) {
+	function AddAChild() {
+		var guessedLetters = document.createElement("td");
+		guessedLetters.innerHTML = userGuess;
 
-	if (userGuess === computerGuess) {
-		wins++;
-		document.querySelector('#wins').innerHTML = "Wins: " + wins;
-		guesses = 9;
-		game(computerGuess);
+		var guessedSoFar = document.getElementById("#guessedSoFar");
+		guessedSoFar.appendChild(guessedLetters);
+	}
+	
+	AddAChild();
+
+	// document.querySelector('#guessesSoFar').innerHTML = userGuess; 
+
+	if (letters.indexOf(userGuess) !== -1) { //checks that input is a valid letter
+
+	if (userGuess === computerGuess) { 									//user guesses computer's letter
+		alert("You guessed right! You win!");
+		wins++;															//number of wins increased by 1
+		document.querySelector('#wins').innerHTML = wins;	//updates on page
+		guesses = 9;													//guesses reset to 9
+		game(computerGuess);											//game starts over
 	}
 
-	else if (guesses === 0) {
-		losses++;
-		document.querySelector("#losses").innerHTML = "Losses: " + losses;
-		alert("You loose! The letter was " + computerGuess);
-		guesses = 9;
-		game(computerGuess);
+	else if (guesses === 0) {												//all guesses used										
+		losses++;															//number of losses increased by 1
+		document.querySelector("#losses").innerHTML = losses;				//updates on page
+		alert("You loose! The letter was " + computerGuess);				//alerts of loss and states letter chosen by computer
+		guesses = 9;														//resets guesses to 9
+		game(computerGuess);												//game starts over
 	}
-	else {
-		guesses--;
-		document.querySelector("#guessesLeft").innerHTML = "Guesses left: " + guesses;
-		console.log(guesses);
+
+	else if (userGuess === guessedLetters) {
+		alert("You have already chosen this letter!");
+	}
+
+	else {																					//user does not guess right	
+		guesses--;																			//number of guesses minus 1
+		document.querySelector("#guessesLeft").innerHTML = guesses;							//updates nr of guesses on page								
 	}
 	} // closes if statement
 	else {
