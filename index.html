@@ -4,42 +4,40 @@
 	<meta charset="UTF-8">
 	<title>Psychic-Game</title>
 	<!-- <link rel="stylesheet" type="text/css" href="assets/css/reset.css"> -->
-	<!-- <link rel="stylesheet" type="text/css" href="assets/css/style.css"> -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
-<body>
+	<body>
+		<div class="wrapper">
+			<h1>The Psychic Game</h1>
 
-<h1>The Psychic Game</h1>
+				<div id="game">
 
-<div id="game">
+					<h2>Guess what letter I'm thinking of!!!</h2>
+					<h3 id="guessesLeft">You have 9 guesses.</h3>
 
-<h2>Guess what letter I'm thinking of!!!</h2>
+						<table>  <!-- table to show results of the game -->
 
-<table>  <!-- table to show results of the game -->
+							<tr>					<!-- wins section -->
+								<td>Wins: </td>
+								<td id="wins"></td>
+							</tr>
 
-<tr>					<!-- wins section -->
-<td>Wins: </td>
-<td id="wins"></td>
-</tr>
+							<tr>					<!-- losses section -->
+								<td>Losses: </td>
+								<td id="losses"></td>
+							</tr>
 
-<tr>					<!-- losses section -->
-<td>Losses: </td>
-<td id="losses"></td>
-</tr>
+							<tr>					<!-- letters used guessed so far section -->
+								<td>Guessed So Far: </td>
+								<td id="guessesSoFar"></td>
+							</tr>
 
-<tr>					<!-- guesses left section -->
-<td>Guesses Left: </td>
-<td id="guessesLeft">9</td>
-</tr>
+						</table> 
 
-<tr>					<!-- letters used guessed so far section -->
-<td>Guessed So Far: </td>
-<td id="guessesSoFar"></td>
-</tr>
+				</div> <!-- closes id="game" -->
 
-</table> 
+		</div> <!-- closes wrapper div -->
 
-</div> <!-- closes id="game" -->
-
-<script type="text/javascript" src="assets/javascript/game.js"></script>
-</body>
+		<script type="text/javascript" src="assets/javascript/game.js"></script>
+	</body>
 </html>
